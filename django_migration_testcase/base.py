@@ -21,8 +21,8 @@ def idempotent_transaction(func):
                 try:
                     func(*args, **kwargs)
                     transaction.savepoint_rollback(sp)
-                except BaseException as e:
-                    raise e
+                except BaseException:
+                    raise
         return func_wrapper
 
 
