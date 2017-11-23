@@ -153,14 +153,10 @@ The test method has a `migrate` method that takes an app name, a
 version and an optional `fake` boolean. By default, this just calls:
 ```python
 call_command('migrate', app_name, version,
-             fake=fake, verbosity=0, no_initial_data=True)
+             fake=fake, verbosity=0)
 ```
 
-If you need to alter your migrate command, you can either override
-this method, or you might just override `migrate_kwargs`, which by
-default sets `verbosity=0` and `no_initial_data=True`. Extend this to
-pass more options/different options. Note that if you try to set a
-`fake` kwarg from this method, it will be ignored.
+If you need to alter your migrate command, you can either override this method, or you might just override `migrate_kwargs`, which by default sets `verbosity=0`. Extend this to pass more options/different options. Note that if you try to set a `fake` kwarg from this method, it will be ignored.
 
 Testing migration failures
 --------------------------
