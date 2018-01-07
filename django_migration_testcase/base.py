@@ -74,15 +74,10 @@ class BaseMigrationTestCase(TransactionTestCase):
         raise NotImplementedError()
 
     def migrate_kwargs(self):
-        kwargs = {
+        return {
             'verbosity': 0,
             'interactive': False,
         }
-        if django.VERSION <= (1, 6):
-            kwargs.update({
-                'no_initial_data': True,
-            })
-        return kwargs
 
     def migrate(self, app_name, version, fake=False):
         kwargs = self.migrate_kwargs()
