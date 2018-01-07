@@ -77,6 +77,7 @@ class BaseMigrationTestCase(TransactionTestCase):
         return {
             'verbosity': 0,
             'interactive': False,
+            'no_initial_data': True,
         }
 
     def migrate(self, app_name, version, fake=False):
