@@ -174,7 +174,7 @@ class ForeignKeyTest(MigrationTest):
 
         # get_model_before/get_model_after seems to not get the same model as
         # this crazy thing.
-        MyModel = ForeignModel.my.field.rel.to
+        MyModel = ForeignModel.my.field.related_model
         self.assertEqual(MyModel.__name__, 'MyModel')
 
         my = MyModel(name='test_my', number=1, double_number=3.14)
@@ -190,7 +190,7 @@ class ForeignKeyTest(MigrationTest):
 
         # get_model_before/get_model_after seems to not get the same model as
         # this crazy thing.
-        MyModel = ForeignModel.my.field.rel.to
+        MyModel = ForeignModel.my.field.related_model
         MyModel2 = self.get_model_after('test_app.MyModel')
 
         self.assertEqual(MyModel, MyModel2)
