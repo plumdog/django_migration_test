@@ -84,7 +84,6 @@ class BaseMigrationTestCase(TransactionTestCase):
             })
         return kwargs
 
-
     def migrate(self, app_name, version, fake=False):
         kwargs = self.migrate_kwargs()
         kwargs['fake'] = fake
