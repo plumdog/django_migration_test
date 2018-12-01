@@ -174,10 +174,7 @@ class ForeignKeyTest(MigrationTest):
 
         # get_model_before/get_model_after seems to not get the same model as
         # this crazy thing.
-        if django.VERSION >= (1, 8):
-            MyModel = ForeignModel.my.field.related_model
-        else:
-            MyModel = ForeignModel.my.field.rel.to
+        MyModel = ForeignModel.my.field.related_model
         self.assertEqual(MyModel.__name__, 'MyModel')
 
         my = MyModel(name='test_my', number=1, double_number=3.14)
