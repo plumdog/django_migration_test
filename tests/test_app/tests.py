@@ -2,6 +2,7 @@ import unittest
 
 import django
 from django.db import IntegrityError
+from django.conf import settings
 
 from django_migration_testcase import MigrationTest
 from django_migration_testcase.base import InvalidModelStateError, idempotent_transaction
@@ -254,6 +255,8 @@ class TeardownCanFail(MigrationTest):
 
 
 @unittest.skipIf(django.VERSION < (1, 7), 'Not supported by older django versions')
+@unittest.skipIf(django.VERSION >= (2, 0) and settings.DATABASES['default']['ENGINE'] == 'django.db.backends.sqlite3',
+                 'Not supported with django2 with sqlite3')
 class TeardownFailCanBeAvoidedWithIdempotentTransaction(MigrationTest):
     before = '0006'
     after = '0007'

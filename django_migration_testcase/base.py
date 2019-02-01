@@ -2,6 +2,7 @@ import functools
 
 import django
 from django.db import transaction
+from django.conf import settings
 from django.test import TransactionTestCase
 from django.core.management import call_command
 
@@ -11,7 +12,7 @@ class InvalidModelStateError(Exception):
 
 
 def idempotent_transaction(func):
-    if django.VERSION < (1, 7,):
+    if django.VERSION < (1, 7,) or django.VERSION >= (2, 0) and settings.DATABASES['default']['ENGINE'] == 'django.db.backends.sqlite3':
         return func
     else:
         @functools.wraps(func)
