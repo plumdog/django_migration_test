@@ -8,6 +8,9 @@ python:
 install: pip install tox-travis tox flake8
 sudo: false
 script: tox
+dist: xenial
+services:
+  - postgresql
 before_script:
   - flake8 django_migration_testcase tests --ignore=E501,E128,E402
   - psql -c 'create database migration_test;' -U postgres
