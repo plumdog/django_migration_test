@@ -17,6 +17,8 @@ matrix:
       services:
         - postgresql
 install: pip install tox-travis tox flake8
+addons:
+  postgresql: "9.4"
 sudo: false
 script: tox
 before_script:
