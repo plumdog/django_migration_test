@@ -51,6 +51,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+MIDDLEWARE = MIDDLEWARE_CLASSES
+
 ROOT_URLCONF = 'migration_test.urls'
 
 WSGI_APPLICATION = 'migration_test.wsgi.application'
